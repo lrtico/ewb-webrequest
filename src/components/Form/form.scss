@@ -1,0 +1,161 @@
+@import '../App/variables.scss';
+@import '../App/mixins.scss';
+
+.form {
+  height: calc(100vh - 93px);
+  @include flexbox();
+  @include flex-direction(column);
+
+  .form__header {
+    border-bottom: 1px solid lightgray;
+    color: gray;
+    @include font-size(3.2);
+    padding: 27px 36px;
+
+    .form__request-number {
+      font-weight: bold;
+      font-family: 'Whitney-Bold', Whitney, sans-serif;
+      margin-right: 99px;
+    }
+
+    .form__status {
+      font-weight: bold;
+    }
+  }
+
+  .form__section {
+    @include flex(1);
+    overflow: hidden;
+    padding: 36px;
+    position: relative;
+
+    .form__section__question {
+      opacity: 0;
+      position: absolute;
+      top: -1000px;
+      left: 36px;
+      width: calc(100% - 72px);
+      transition: all 800ms cubic-bezier(0.7, 0, 0.37, 1);
+
+      &.form__section__question--active {
+        opacity: 1;
+        top: 36px;
+      }
+
+      .form__section__question__checkboxes {
+        @include flexbox();
+        margin-bottom: 18px;
+
+        .form__section__question__checkbox {
+          // background-color: #8080803d;
+          border: 3px solid $ewb-red;
+          @include flexbox();
+          @include flex(1 0 25%);
+          @include justify-content(center);
+          @include align-items(center);
+          margin: 9px;
+          text-align: center;
+          transition: all 400ms ease;
+
+          &.form__section__question__checkbox--active {
+            background-color: $ewb-red;
+
+            label {
+              color: white;
+            }
+
+            &:hover {
+              background-color: $ewb-red;
+            }
+          }
+
+          &:hover {
+            background-color: rgba(206, 27, 14, 0.1);
+          }
+
+          label {
+            cursor: pointer;
+            font-size: 2.4rem;
+            margin-bottom: 0;
+            overflow: hidden;
+            position: relative;
+            padding: 18px 36px;
+            width: 100%;
+
+            input[type='radio'] {
+              position: absolute;
+              margin: 0;
+              width: 13px;
+              top: -15px;
+              right: 6px;
+              transform: rotate(45deg);
+
+              &:checked {
+                &:before {
+                  background-color: #000;
+                  content: '';
+                  height: 9px;
+                  position: absolute;
+                  right: 0;
+                  left: 21px;
+                  top: 15px;
+                  width: 3px;
+                }
+
+                &:after {
+                  content: '';
+                  position: absolute;
+                  width: 8px;
+                  height: 3px;
+                  background-color: #000;
+                  left: 16px;
+                  top: 24px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    label,
+    .form__section__question__title--checkbox {
+      color: gray;
+      display: block;
+      @include font-size(3.2);
+      margin-bottom: 18px;
+
+      .required {
+        color: #ce1b0e;
+        font-weight: bold;
+      }
+    }
+
+    input {
+      border: none;
+      border-bottom: 1px solid gray;
+      background: none;
+      @include font-size(3.2);
+      margin-bottom: 36px;
+      text-transform: capitalize;
+      width: 100%;
+
+      &:focus {
+        background-color: rgba(255, 235, 0, 0.15);
+        outline: none;
+      }
+    }
+
+    .input__hint {
+      @include font-size(1.6);
+      color: $gunmetal;
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-left: 0;
+      margin-right: 36px;
+    }
+  }
+}

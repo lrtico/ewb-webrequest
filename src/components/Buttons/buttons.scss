@@ -1,0 +1,189 @@
+@import '../App/variables.scss';
+
+.btn {
+  background-color: $ewb-red;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  font-family: 'Whitney-Bold', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  overflow: hidden;
+  padding: 18px 45px;
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+
+  &.btn--active > span {
+    color: rgb(213, 251, 255);
+  }
+
+  .btn__hover {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  .btn__hover::after,
+  .btn__hover::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: -webkit-linear-gradient(45deg, #020202ad 0%, #a5a5a552 100%);
+    background: -o-linear-gradient(45deg, #020202ad 0%, #a5a5a552 100%);
+    background: linear-gradient(45deg, #020202ad 0%, #a5a5a552 100%);
+  }
+
+  .btn__hover::before {
+    -webkit-transform: translate3d(0px, 103%, 0px);
+    transform: translate3d(0px, 103%, 0px);
+    opacity: 1;
+  }
+
+  .btn__hover::after {
+    -webkit-transform: translate3d(0px, -105%, 0px);
+    transform: translate3d(0px, -105%, 0px);
+    opacity: 1;
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: -webkit-transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    -o-transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  > span {
+    position: relative;
+    top: 0;
+    z-index: 2;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+
+  &:hover .btn__hover::before {
+    -webkit-transform: translateZ(0px);
+    transform: translateZ(0px);
+    opacity: 1;
+    -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: -webkit-transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    -o-transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  &.btn--active .btn__hover::after,
+  &.btn--active .btn__hover::before {
+    background: transparent;
+  }
+
+  &:hover .btn__hover::after {
+    -webkit-transform: translateZ(0px);
+    transform: translateZ(0px);
+    opacity: 0;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+
+  &:hover > span {
+    color: white;
+    top: 2px;
+  }
+
+  &.btn--active {
+    -webkit-animation: toggleButton 800ms ease-in-out forwards;
+    animation: toggleButton 800ms ease-in-out forwards;
+    -webkit-transition: all 250ms;
+    -o-transition: all 250ms;
+    transition: all 250ms;
+  }
+
+  &.btn--active:hover {
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+  &.add-button {
+    margin-left: 0;
+  }
+
+  &.add-button:hover span {
+    color: white;
+  }
+
+  &.add-button.btn--active span {
+    color: rgb(213, 251, 255);
+  }
+}
+
+@-webkit-keyframes toggleButton {
+  0% {
+    background: -webkit-linear-gradient(225deg, #4aa1ab 0%, #130d5f 100%);
+    background: linear-gradient(-135deg, #4aa1ab 0%, #130d5f 100%);
+    opacity: 1;
+  }
+  15% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    background: -webkit-linear-gradient(225deg, #4aa1ab 0%, #130d5f 100%);
+    background: linear-gradient(-135deg, #4aa1ab 0%, #130d5f 100%);
+  }
+}
+
+@keyframes toggleButton {
+  0% {
+    background: -webkit-linear-gradient(225deg, #4aa1ab 0%, #130d5f 100%);
+    background: -o-linear-gradient(225deg, #4aa1ab 0%, #130d5f 100%);
+    background: linear-gradient(-135deg, #4aa1ab 0%, #130d5f 100%);
+    opacity: 1;
+  }
+  15% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    background: -webkit-linear-gradient(225deg, #4aa1ab 0%, #130d5f 100%);
+    background: -o-linear-gradient(225deg, #4aa1ab 0%, #130d5f 100%);
+    background: linear-gradient(-135deg, #4aa1ab 0%, #130d5f 100%);
+  }
+}

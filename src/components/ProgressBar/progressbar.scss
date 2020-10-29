@@ -1,0 +1,63 @@
+@import '../App/mixins.scss';
+@import '../App/variables.scss';
+@import '../Buttons/buttons.scss';
+
+.pb {
+  background-color: #f2f2f2;
+  @include flexbox;
+  @include justify-content(space-between);
+
+  .pb__label {
+    @include flexbox();
+    @include align-items(center);
+    @include flex(1 1 auto);
+    @include font-size(1.5);
+    font-family: 'Whitney-Bold', sans-serif;
+    padding-right: 36px;
+    white-space: nowrap;
+
+    &:before {
+      background-color: $gunmetal;
+      content: '';
+      height: 1px;
+      width: 100%;
+    }
+  }
+
+  .pb__percent {
+    background-image: linear-gradient(45deg, #f2f2f2 33.33%, #999999 33.33%, #999999 50%, #f2f2f2 50%, #f2f2f2 83.33%, #999999 83.33%, #999999 100%);
+    background-size: 12.73px 12.73px;
+    border-right: 2px solid #999999;
+    width: 10%;
+    transition: all 600ms ease;
+  }
+
+  .btn {
+    margin: 18px;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    &:disabled {
+      .btn {
+        background-color: #949494;
+        cursor: default;
+
+        .btn__hover {
+          display: none;
+        }
+      }
+
+      &:hover {
+        .btn {
+          > span {
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+}
